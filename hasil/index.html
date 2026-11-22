@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var f=true;if((f||!sessionStorage.getItem('dc-seen'))&&(f||!matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('dc-intro')}catch(e){}</script>
+<style>
+[data-curtain]{visibility:hidden;clip-path:inset(100% 0 0 0)}
+html.dc-intro [data-curtain]{visibility:visible;clip-path:inset(0 0 0 0);animation:dcFail 0s linear 5s forwards}
+@keyframes dcFail{to{visibility:hidden}}
+@keyframes dcFade{from{opacity:0}to{opacity:1}}
+@keyframes dcPop{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){[data-modal],[data-modal]>div{animation:none!important}}
+.dc-row{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:24px;align-items:start}
+@media(max-width:820px){.dc-row{grid-template-columns:minmax(0,1fr)}}
+</style>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#0a1440;color:#eef1ff;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#ffe7b8;text-decoration:none}
+a:hover{color:#fff}
+*{box-sizing:border-box}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:radial-gradient(1200px 700px at 70% 10%, #1f3a9e 0%, #11226b 40%, #0a1440 75%);overflow-x:clip;position:relative">
+
+  <div data-curtain="" style="position:fixed;inset:0;z-index:100;background:#0a1440;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;pointer-events:none">
+    <div style="position:absolute;inset:0;background:radial-gradient(900px 500px at 50% 40%,#1f3a9e,rgba(10,20,64,0) 70%)"></div>
+    <div style="position:relative;font-family:Lexend;font-weight:600;font-size:14px;letter-spacing:.3em;color:#ff8a7e">HAFIZAH.</div>
+    <div data-curtain-label="" style="position:relative;font-family:Lexend;font-weight:800;font-size:clamp(44px,9vw,128px);letter-spacing:-.03em;color:#ffe7b8;line-height:1">Portofolio</div>
+    <div style="position:relative;width:120px;height:2px;background:linear-gradient(90deg,#ff6b5e,#ffe7b8)"></div>
+  </div>
+
+  <a data-totop="" href="#beranda" onClick="{{ goTop }}" aria-label="{{ t.toTop }}" style="position:fixed;right:24px;bottom:24px;z-index:30;width:56px;height:56px;border-radius:50%;background:rgba(10,20,64,.85);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;color:#ffe7b8;font-size:20px;font-weight:700;opacity:0;translate:0 20px;pointer-events:none;transition:opacity .4s,translate .4s cubic-bezier(.2,.7,.2,1),background .3s" style-hover="background:#1f3a9e;color:#fff">
+    <svg width="56" height="56" viewBox="0 0 56 56" style="position:absolute;inset:0;transform:rotate(-90deg)"><circle cx="28" cy="28" r="25" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="2"></circle><circle data-totop-ring="" cx="28" cy="28" r="25" fill="none" stroke="#ffe7b8" stroke-width="2" stroke-linecap="round" stroke-dasharray="157.08" stroke-dashoffset="157.08"></circle></svg>
+    <span style="position:relative">↑</span>
+  </a>
+
+  <div data-spot="" style="position:fixed;left:0;top:0;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(120,150,255,.16),rgba(120,150,255,0) 65%);pointer-events:none;z-index:0;translate:-2000px -2000px"></div>
+
+  <sc-if value="{{ sparkles }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:0;pointer-events:none">
+      <sc-for list="{{ dots }}" as="d" hint-placeholder-count="0">
+        <div data-twinkle="" style="position:absolute;left:{{ d.x }};top:{{ d.y }};width:{{ d.s }};height:{{ d.s }};border-radius:50%;background:#fff;opacity:{{ d.o }};box-shadow:0 0 12px 3px rgba(190,210,255,.6)"></div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <header style="position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(10,20,64,.72);border-bottom:1px solid rgba(255,255,255,.07)">
+    <div data-progress="" style="position:absolute;left:0;right:0;bottom:-1px;height:2px;background:linear-gradient(90deg,#ff6b5e,#ffe7b8);transform:scaleX(0);transform-origin:0 50%"></div>
+    <div style="max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+      <div style="font-family:Lexend;font-weight:800;font-size:22px;color:#ff6b5e;letter-spacing:-.02em">hafizah<span style="color:#ffe7b8">.</span></div>
+      <nav style="position:relative;display:flex;gap:2px;flex-wrap:nowrap;flex:1;min-width:0;justify-content:center;overflow-x:auto;scrollbar-width:none">
+        <div data-navpill="" style="position:absolute;left:0;top:0;height:100%;width:0;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,231,184,.3);opacity:0;transition:transform .55s cubic-bezier(.2,.8,.2,1),width .55s cubic-bezier(.2,.8,.2,1),opacity .3s;pointer-events:none"></div>
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+          <a href="#{{ n.id }}" onClick="{{ n.go }}" style="position:relative;transition:color .3s;padding:8px 10px;border-radius:999px;font-size:14px;font-weight:500;white-space:nowrap;flex-shrink:0;color:{{ n.color }};background:{{ n.bg }}" style-hover="background:rgba(255,255,255,.08);color:#fff">{{ n.label }}</a>
+        </sc-for>
+      </nav>
+      <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+        <div role="group" aria-label="{{ t.langLabel }}" style="display:flex;padding:3px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.05)">
+          <button type="button" onClick="{{ setId }}" aria-pressed="{{ isId }}" style="all:unset;box-sizing:border-box;cursor:pointer;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.06em;transition:background .3s,color .3s;background:{{ idBg }};color:{{ idColor }}">ID</button>
+          <button type="button" onClick="{{ setEn }}" aria-pressed="{{ isEn }}" style="all:unset;box-sizing:border-box;cursor:pointer;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.06em;transition:background .3s,color .3s;background:{{ enBg }};color:{{ enColor }}">EN</button>
+        </div>
+        <a href="#kontak" onClick="{{ goKontak }}" style="padding:10px 18px;border-radius:999px;background:#ffe7b8;color:#0a1440;font-weight:700;font-size:14px;white-space:nowrap" style-hover="background:#fff;color:#0a1440">{{ t.hire }}</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="beranda" data-screen-label="Hero" style="position:relative;max-width:1200px;margin:0 auto;padding:36px 24px 48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div data-reveal="up" data-delay="100" style="font-family:Lexend;font-weight:600;font-size:14px;letter-spacing:.14em;color:#ffe7b8">{{ t.hello }}</div>
+      <h1 style="margin:0;font-family:Lexend;font-weight:800;font-size:clamp(40px,5vw,68px);line-height:1.04;letter-spacing:-.03em;text-wrap:balance"><span style="display:inline-block;overflow:hidden;vertical-align:top;padding:0 .05em .16em;margin:0 -.05em -.16em"><span data-reveal="rise" data-delay="250" style="display:inline-block">Hafizah</span></span> <span style="display:inline-block;overflow:hidden;vertical-align:top;padding:0 .05em .16em;margin:0 -.05em -.16em"><span data-reveal="rise" data-delay="420" style="display:inline-block">Nurfadillah</span></span></h1>
+      <p data-reveal="up" data-delay="450" style="margin:0;font-size:17px;line-height:1.6;color:#c3cbf0;max-width:420px;text-wrap:pretty">apt. Hafizah Nurfadillah, S.Farm — Licensed Pharmacist | Aspiring Clinical Pharmacist | Patient-Centered Care</p>
+      <div data-reveal="up" data-delay="600" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a data-magnet="" href="#tentang" onClick="{{ goTentang }}" style="padding:14px 24px;border-radius:999px;background:#ffe7b8;color:#0a1440;font-weight:700;display:flex;align-items:center;gap:10px;white-space:nowrap" style-hover="background:#fff;color:#0a1440;transform:translateY(-2px)">{{ t.aboutBtn }} <span>→</span></a>
+        <a data-magnet="" href="#magang" onClick="{{ goPorto }}" style="padding:14px 24px;border-radius:999px;border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:600;white-space:nowrap;display:flex;align-items:center" style-hover="background:rgba(255,255,255,.08);color:#fff">{{ t.viewExp }}</a>
+      </div>
+    </div>
+
+    <div data-reveal="scale" data-delay="300" style="position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:440px">
+      <div data-parallax="-18" style="position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 35%, #3d63e0, #1a2f8a 70%);bottom:4%;box-shadow:0 0 120px 20px rgba(70,110,255,.35)"></div>
+      <div data-spin="" style="position:absolute;width:92%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(160,190,255,.25);bottom:-3%">
+        <div style="position:absolute;left:50%;top:-6px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#ffe7b8;box-shadow:0 0 18px 4px rgba(255,231,184,.6)"></div>
+        <div style="position:absolute;left:50%;bottom:-4px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#ff6b5e;box-shadow:0 0 14px 3px rgba(255,107,94,.6)"></div>
+      </div>
+      <div data-parallax="10" style="position:relative;width:min(340px,80%);height:440px">
+        <image-slot id="hero-photo" shape="rounded" radius="28" fit="cover" src="assets/foto-profil.png" placeholder="Foto diri"></image-slot>
+      </div>
+    </div>
+
+    <aside id="tentang" data-reveal="up" data-delay="700" style="display:flex;flex-direction:column;gap:28px;padding:28px;border-radius:24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-family:Lexend;font-weight:800;font-size:20px;letter-spacing:.02em">{{ t.aboutTitle }}</div>
+        <p style="margin:0;font-size:15px;line-height:1.65;color:#c3cbf0;text-wrap:pretty">{{ t.aboutText }}</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="2">
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <div data-count="" style="font-family:Lexend;font-weight:800;font-size:30px;color:#ffe7b8">{{ s.v }}</div>
+            <div style="font-size:13px;color:#9aa5d8">{{ s.l }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:13px;color:#9aa5d8">{{ t.findMe }}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ socials }}" as="so" hint-placeholder-count="3">
+            <a href="{{ so.href }}" target="_blank" style="height:40px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center" style-hover="background:#ffe7b8;color:#0a1440">{{ so.label }}</a>
+          </sc-for>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <div style="position:relative;overflow:hidden;padding:16px 0;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)">
+    <div data-marquee="" style="display:flex;width:max-content">
+      <sc-for list="{{ marquee }}" as="m" hint-placeholder-count="8">
+        <span style="display:flex;align-items:center;gap:56px;padding-right:56px;font-family:Lexend;font-weight:700;font-size:clamp(20px,2.4vw,30px);white-space:nowrap;color:#eef1ff">{{ m }}</span>
+      </sc-for>
+    </div>
+  </div>
+
+  <section id="pendidikan" data-screen-label="Pendidikan" style="position:relative;max-width:1200px;margin:0 auto;padding:48px 24px">
+    <div data-reveal="up" style="margin-bottom:28px">
+      <h2 data-reveal="clip" data-delay="200" style="margin:0 0 14px;font-family:Lexend;font-weight:800;font-size:clamp(26px,3.4vw,40px);line-height:1.15;letter-spacing:.02em;text-wrap:balance">{{ t.secEdu }}</h2>
+      <div style="height:2px;border-radius:2px;background:linear-gradient(90deg,#ff6b5e,#ffe7b8 45%,rgba(255,231,184,0))"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px">
+      <sc-for list="{{ education }}" as="ed" hint-placeholder-count="2">
+        <div data-card="" style="position:relative;padding:14px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:18px;transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,background .3s,border-color .3s" data-reveal="up" style-hover="background:rgba(255,255,255,.08);border-color:rgba(255,231,184,.35);transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.35)">
+          <div data-glare="" style="position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;z-index:3;background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(255,231,184,.16),rgba(255,231,184,0) 62%)"></div>
+          <div style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.06)">
+            <image-slot data-pimg="" id="edu-photo-{{ $index }}" shape="rounded" radius="14" fit="cover" src="{{ ed.img }}" placeholder="Foto kegiatan pendidikan"></image-slot>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:0 12px 12px;flex-wrap:wrap">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.06em;color:#ff8a7e"><span style="width:8px;height:8px;border-radius:50%;background:#ff6b5e"></span>{{ ed.year }}</div>
+              <div style="font-family:Lexend;font-weight:700;font-size:22px;line-height:1.25">{{ ed.title }}</div>
+              <div style="font-size:15px;color:#aab3e0">{{ ed.school }}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px">
+              <div style="font-family:Lexend;font-weight:700;font-size:32px;color:#ffe7b8;line-height:1">{{ ed.gpa }}</div>
+              <div style="font-size:12px;letter-spacing:.08em;color:#aab3e0">{{ t.gpaLabel }}</div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="magang" data-screen-label="Pengalaman Magang" style="position:relative;max-width:1200px;margin:0 auto;padding:48px 24px">
+    <div data-reveal="up" style="margin-bottom:28px">
+      <h2 data-reveal="clip" data-delay="200" style="margin:0 0 14px;font-family:Lexend;font-weight:800;font-size:clamp(26px,3.4vw,40px);line-height:1.15;letter-spacing:.02em;text-wrap:balance">{{ t.secInt }}</h2>
+      <div style="height:2px;border-radius:2px;background:linear-gradient(90deg,#ff6b5e,#ffe7b8 45%,rgba(255,231,184,0))"></div>
+    </div>
+    <div data-tl="" style="position:relative;padding-left:32px">
+      <div style="position:absolute;left:8px;top:0;bottom:0;width:2px;border-radius:2px;background:rgba(255,255,255,.1)">
+        <div data-tl-fill="" style="position:absolute;inset:0;border-radius:2px;background:linear-gradient(180deg,#ff6b5e,#ffe7b8);transform:scaleY(0);transform-origin:50% 0"></div>
+        <div data-tl-head="" style="position:absolute;left:50%;top:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#ffe7b8;box-shadow:0 0 18px 5px rgba(255,231,184,.55)"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+      <sc-for list="{{ internships }}" as="ex" hint-placeholder-count="2">
+        <div data-card="" data-reveal="up" class="dc-row" style="position:relative;padding:14px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,background .3s,border-color .3s" style-hover="background:rgba(255,255,255,.08);border-color:rgba(255,231,184,.35);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.35)">
+          <div data-glare="" style="position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;z-index:3;background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(255,231,184,.16),rgba(255,231,184,0) 62%)"></div>
+          <div style="aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.06)">
+            <image-slot data-pimg="" id="int-photo-{{ $index }}" shape="rounded" radius="14" fit="cover" src="{{ ex.img }}" placeholder="Foto kegiatan"></image-slot>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;padding:4px 10px 10px">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.06em;color:#ff8a7e"><span data-tl-dot="" style="width:8px;height:8px;border-radius:50%;background:#ff6b5e;flex-shrink:0;transition:transform .4s,box-shadow .4s,background .4s"></span>{{ ex.period }}</div>
+            <div style="font-family:Lexend;font-weight:700;font-size:21px;line-height:1.25">{{ ex.role }}</div>
+            <div style="font-size:14px;font-weight:600;color:#ffe7b8">{{ ex.org }}</div>
+            <ul style="margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
+              <sc-for list="{{ ex.points }}" as="pt" hint-placeholder-count="3">
+                <li style="position:relative;padding-left:18px;font-size:14px;line-height:1.6;color:#c3cbf0;text-wrap:pretty"><span style="position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:#ff6b5e"></span>{{ pt }}</li>
+              </sc-for>
+            </ul>
+          </div>
+        </div>
+      </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="organisasi" data-screen-label="Pengalaman Organisasi" style="position:relative;max-width:1200px;margin:0 auto;padding:48px 24px">
+    <div data-reveal="up" style="margin-bottom:28px">
+      <h2 data-reveal="clip" data-delay="200" style="margin:0 0 14px;font-family:Lexend;font-weight:800;font-size:clamp(26px,3.4vw,40px);line-height:1.15;letter-spacing:.02em;text-wrap:balance">{{ t.secOrg }}</h2>
+      <div style="height:2px;border-radius:2px;background:linear-gradient(90deg,#ff6b5e,#ffe7b8 45%,rgba(255,231,184,0))"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <sc-for list="{{ orgs }}" as="og" hint-placeholder-count="2">
+        <div data-card="" data-reveal="up" class="dc-row" style="position:relative;padding:14px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,background .3s,border-color .3s" style-hover="background:rgba(255,255,255,.08);border-color:rgba(255,231,184,.35);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.35)">
+          <div data-glare="" style="position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;z-index:3;background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(255,231,184,.16),rgba(255,231,184,0) 62%)"></div>
+          <div style="aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.06)">
+            <image-slot data-pimg="" id="org-photo-{{ $index }}" shape="rounded" radius="14" fit="cover" src="{{ og.img }}" placeholder="Foto kegiatan"></image-slot>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;padding:4px 10px 10px">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.06em;color:#ff8a7e"><span style="width:8px;height:8px;border-radius:50%;background:#ff6b5e;flex-shrink:0"></span>{{ og.period }}</div>
+            <div style="font-family:Lexend;font-weight:700;font-size:21px;line-height:1.25">{{ og.role }}</div>
+            <div style="font-size:14px;font-weight:600;color:#ffe7b8">{{ og.org }}</div>
+            <ul style="margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
+              <sc-for list="{{ og.points }}" as="pt" hint-placeholder-count="3">
+                <li style="position:relative;padding-left:18px;font-size:14px;line-height:1.6;color:#c3cbf0;text-wrap:pretty"><span style="position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:#ff6b5e"></span>{{ pt }}</li>
+              </sc-for>
+            </ul>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="sertifikasi" data-screen-label="Sertifikasi" style="position:relative;max-width:1200px;margin:0 auto;padding:48px 24px">
+    <div data-reveal="up" style="margin-bottom:28px">
+      <h2 data-reveal="clip" data-delay="200" style="margin:0 0 14px;font-family:Lexend;font-weight:800;font-size:clamp(26px,3.4vw,40px);line-height:1.15;letter-spacing:.02em;text-wrap:balance">{{ t.secCert }}</h2>
+      <div style="height:2px;border-radius:2px;background:linear-gradient(90deg,#ff6b5e,#ffe7b8 45%,rgba(255,231,184,0))"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:18px">
+      <sc-for list="{{ certs }}" as="ce" hint-placeholder-count="3">
+        <button type="button" onClick="{{ ce.open }}" aria-label="{{ ce.title }}" data-reveal="up" style="all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:linear-gradient(160deg,#2c4ccf 0%,#16298a 55%,#0f1d63 100%);border:1px solid rgba(255,231,184,.28);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s" style-hover="transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.4)">
+          <sc-if value="{{ ce.hasImg }}" hint-placeholder-val="{{ false }}">
+            <div style="aspect-ratio:4/3;background:#0a1440;overflow:hidden"><img src="{{ ce.imgSrc }}" alt="{{ ce.title }}" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          </sc-if>
+          <sc-if value="{{ ce.noImg }}" hint-placeholder-val="{{ true }}">
+            <div style="aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative">
+              <div style="position:absolute;inset:12px;border-radius:14px;border:1px dashed rgba(255,231,184,.28);pointer-events:none"></div>
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#ffe7b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5l8-3z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg>
+            </div>
+          </sc-if>
+          <div style="padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;text-align:left;border-top:1px solid rgba(255,231,184,.16)">
+            <div style="font-family:Lexend;font-weight:600;font-size:12px;letter-spacing:.2em;color:#ff8a7e">{{ ce.kind }}</div>
+            <div style="font-family:Lexend;font-weight:700;font-size:19px;line-height:1.25;color:#fff;text-wrap:balance">{{ ce.title }}</div>
+            <div style="font-size:14px;color:#c3cbf0">{{ ce.issuer }}</div>
+            <div style="margin-top:6px;font-size:13px;font-weight:700;color:#ffe7b8;display:flex;align-items:center;gap:8px">{{ t.detail }} <span>&rarr;</span></div>
+          </div>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="teknis" data-screen-label="Kemampuan Teknis" style="position:relative;max-width:1200px;margin:0 auto;padding:48px 24px">
+    <div data-reveal="up" style="margin-bottom:28px">
+      <h2 data-reveal="clip" data-delay="200" style="margin:0 0 14px;font-family:Lexend;font-weight:800;font-size:clamp(26px,3.4vw,40px);line-height:1.15;letter-spacing:.02em;text-wrap:balance">{{ t.secTech }}</h2>
+      <div style="height:2px;border-radius:2px;background:linear-gradient(90deg,#ff6b5e,#ffe7b8 45%,rgba(255,231,184,0))"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:12px">
+      <sc-for list="{{ technical }}" as="tk" hint-placeholder-count="14">
+        <div data-reveal="up" style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);transition:transform .35s cubic-bezier(.2,.7,.2,1),background .3s,border-color .3s" style-hover="background:rgba(255,255,255,.08);border-color:rgba(255,231,184,.35);transform:translateX(6px)">
+          <span style="font-family:Lexend;font-weight:800;font-size:12px;color:#0a1440;background:#ffe7b8;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">{{ tk.n }}</span>
+          <span style="font-size:15px;line-height:1.5;color:#dfe4fb;text-wrap:pretty">{{ tk.t }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="personal" data-screen-label="Personal & Software" style="position:relative;max-width:1200px;margin:0 auto;padding:48px 24px">
+    <div data-reveal="up" style="margin-bottom:28px">
+      <h2 data-reveal="clip" data-delay="200" style="margin:0 0 14px;font-family:Lexend;font-weight:800;font-size:clamp(26px,3.4vw,40px);line-height:1.15;letter-spacing:.02em;text-wrap:balance">{{ t.secPers }}</h2>
+      <div style="height:2px;border-radius:2px;background:linear-gradient(90deg,#ff6b5e,#ffe7b8 45%,rgba(255,231,184,0))"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px">
+      <div data-reveal="up" style="padding:28px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:18px">
+        <div style="font-family:Lexend;font-weight:700;font-size:20px">{{ t.persTitle }}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <sc-for list="{{ personal }}" as="pe" hint-placeholder-count="10">
+            <span style="padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);font-size:14px;font-weight:500;color:#eef1ff" style-hover="background:#ffe7b8;color:#0a1440">{{ pe }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div data-reveal="up" style="padding:28px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:18px">
+        <div style="font-family:Lexend;font-weight:700;font-size:20px">{{ t.swTitle }}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <sc-for list="{{ software }}" as="sw" hint-placeholder-count="2">
+            <span style="padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);font-size:14px;font-weight:500;color:#eef1ff" style-hover="background:#ffe7b8;color:#0a1440">{{ sw }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontak" data-screen-label="Kontak" style="position:relative;max-width:1200px;margin:0 auto;padding:48px 24px 72px">
+    <div data-reveal="scale" style="padding:clamp(32px,5vw,64px);border-radius:32px;background:linear-gradient(135deg,#2440b8,#152a85);border:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <h2 style="margin:0;font-family:Lexend;font-weight:800;font-size:clamp(30px,4vw,48px);line-height:1.1;text-wrap:balance">{{ t.contactTitle }}</h2>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#d3d9f7">Licensed Pharmacist | Aspiring Clinical Pharmacist | Patient-Centered Care</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px">
+          <sc-for list="{{ contacts }}" as="c" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <span style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#ffe7b8">{{ c.label }}</span>
+              <a href="{{ c.href }}" target="_blank" style="font-size:15px;color:#fff" style-hover="color:#ffe7b8">{{ c.value }}</a>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:12px">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:18px;border-radius:14px;background:#ffe7b8;color:#0a1440;font-weight:600">{{ t.thanks }}</div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <input required="" placeholder="{{ t.phName }}" style="height:50px;padding:0 18px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(10,20,64,.4);color:#fff;font:inherit;font-size:15px;outline:none">
+          <input required="" type="email" placeholder="{{ t.phEmail }}" style="height:50px;padding:0 18px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(10,20,64,.4);color:#fff;font:inherit;font-size:15px;outline:none">
+          <textarea rows="3" placeholder="{{ t.phMsg }}" style="padding:14px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(10,20,64,.4);color:#fff;font:inherit;font-size:15px;outline:none;resize:vertical"></textarea>
+          <button data-magnet="" type="submit" style="height:52px;border:0;border-radius:999px;background:#ffe7b8;color:#0a1440;font:inherit;font-weight:700;font-size:15px;cursor:pointer" style-hover="background:#fff">{{ t.send }} →</button>
+        </sc-if>
+      </form>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1200px;margin:0 auto;padding:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:#8892c6">
+      <span>© 2026 apt. Hafizah Nurfadillah, S.Farm. All rights reserved.</span>
+      <span>Jakarta, Indonesia</span>
+    </div>
+  </footer>
+
+  <sc-if value="{{ certOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-modal="" onClick="{{ closeCert }}" role="dialog" aria-modal="true" aria-label="{{ cur.title }}" style="position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(5,10,36,.78);backdrop-filter:blur(10px);animation:dcFade .3s ease both">
+      <div onClick="{{ stop }}" style="position:relative;width:min(960px,100%);max-height:calc(100vh - 40px);overflow:auto;border-radius:28px;background:linear-gradient(160deg,#16298a,#0c1850);border:1px solid rgba(255,231,184,.25);box-shadow:0 40px 120px rgba(0,0,0,.6);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));animation:dcPop .45s cubic-bezier(.2,.7,.2,1) both">
+        <button type="button" onClick="{{ closeCert }}" aria-label="{{ t.close }}" style="all:unset;box-sizing:border-box;cursor:pointer;position:absolute;top:14px;right:14px;z-index:2;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:#fff;transition:background .3s" style-hover="background:#ffe7b8;color:#0a1440">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+        </button>
+        <div style="padding:28px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.04);min-height:260px">
+          <sc-if value="{{ cur.hasImg }}" hint-placeholder-val="{{ false }}">
+            <img src="{{ cur.imgSrc }}" alt="{{ cur.title }}" style="width:100%;max-height:70vh;object-fit:contain;border-radius:14px;display:block">
+          </sc-if>
+          <sc-if value="{{ cur.noImg }}" hint-placeholder-val="{{ true }}">
+            <div style="position:relative;width:100%;aspect-ratio:4/3;border-radius:18px;background:linear-gradient(160deg,#2c4ccf 0%,#16298a 55%,#0f1d63 100%);border:1px solid rgba(255,231,184,.28);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;text-align:center">
+              <div style="position:absolute;inset:12px;border-radius:12px;border:1px dashed rgba(255,231,184,.28);pointer-events:none"></div>
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#ffe7b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5l8-3z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg>
+              <div style="font-size:13px;line-height:1.5;color:#c3cbf0;max-width:260px">{{ t.noPhoto }}</div>
+            </div>
+          </sc-if>
+        </div>
+        <div style="padding:40px 32px 32px;display:flex;flex-direction:column;gap:14px;justify-content:center">
+          <div style="font-family:Lexend;font-weight:600;font-size:12px;letter-spacing:.2em;color:#ff8a7e">{{ cur.kind }}</div>
+          <h3 style="margin:0;font-family:Lexend;font-weight:800;font-size:clamp(22px,2.6vw,30px);line-height:1.2;text-wrap:balance">{{ cur.title }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.65;color:#c3cbf0;text-wrap:pretty">{{ cur.desc }}</p>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:14px;margin-top:4px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)">
+            <span style="color:#9aa5d8">{{ t.issuedBy }}</span><span style="font-weight:600">{{ cur.issuer }}</span>
+            <span style="color:#9aa5d8">{{ t.holder }}</span><span style="font-weight:600">apt. Hafizah Nurfadillah, S.Farm</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px">
+            <span style="font-size:13px;color:#9aa5d8">{{ cur.no }} / {{ cur.total }}</span>
+            <div style="display:flex;gap:10px">
+              <button type="button" onClick="{{ prevCert }}" aria-label="{{ t.prev }}" style="all:unset;box-sizing:border-box;cursor:pointer;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;color:#fff;transition:background .3s" style-hover="background:#ffe7b8;color:#0a1440"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg></button>
+              <button type="button" onClick="{{ nextCert }}" aria-label="{{ t.next }}" style="all:unset;box-sizing:border-box;cursor:pointer;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;color:#fff;transition:background .3s" style-hover="background:#ffe7b8;color:#0a1440"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;sparkles&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { active: 'beranda', open: 0, sent: false, lang: 'id', cert: -1, imgOk: {} };
+  boot() {
+    let l = 'id';
+    try { const v = localStorage.getItem('dc-lang'); if (v === 'en' || v === 'id') l = v; } catch (e) {}
+    const m = location.search.match(/[?&]lang=(en|id)/); if (m) l = m[1];
+    document.documentElement.lang = l; if (l !== this.state.lang) this.setState({ lang: l });
+    const kd = e => { if (this.state.cert < 0) return; if (e.key === 'Escape') this.closeCertNow(); else if (e.key === 'ArrowRight') this.stepCert(1); else if (e.key === 'ArrowLeft') this.stepCert(-1); };
+    addEventListener('keydown', kd); this._off.push(() => { removeEventListener('keydown', kd); document.body.style.overflow = ''; });
+    // foto sertifikat tampil otomatis kalau file-nya ada di assets/sertifikat/
+    ['assets/sertifikat/cert-bnsp.jpg', 'assets/sertifikat/cert-str.jpg', 'assets/sertifikat/cert-kompetensi.jpg'].forEach((src, i) => { const im = new Image(); im.onload = () => this.setState(s => ({ imgOk: { ...s.imgOk, [i]: true } })); im.src = src; });
+  }
+  setLang(l) { this.setState({ lang: l }); document.documentElement.lang = l; try { localStorage.setItem('dc-lang', l); } catch (e) {} }
+  openCert(i) { this.setState({ cert: i }); document.body.style.overflow = 'hidden'; }
+  closeCertNow() { this.setState({ cert: -1 }); document.body.style.overflow = ''; }
+  stepCert(d) { this.setState(s => ({ cert: (s.cert + d + 3) % 3 })); }
+  componentDidMount() {
+    this._off = [];
+    this.boot();
+    const root = document.documentElement, cur = document.querySelector('[data-curtain]');
+    // animasi selalu tampil (setara ?motion=1), walau sistem memakai "reduce motion"
+    const force = true;
+    this._force = force;
+    const reduce = this.props.animations === false || (!force && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (reduce) { root.classList.remove('dc-intro'); return; }
+    let seen = false;
+    try { seen = !force && sessionStorage.getItem('dc-seen') === '1'; sessionStorage.setItem('dc-seen', '1'); } catch (e) {}
+    const start = () => { try { this.setupAnim(); } catch (err) { console.error(err); } };
+    if (!cur || seen) { root.classList.remove('dc-intro'); setTimeout(start, 30); return; }
+    // Intro: tirai biru menutup halaman, tulisan naik, lalu tirai terangkat dan hero masuk satu per satu
+    const lab = document.querySelector('[data-curtain-label]'); if (lab) lab.textContent = this.state.lang === 'en' ? 'Portfolio' : 'Portofolio';
+    cur.style.visibility = 'visible'; cur.style.clipPath = 'inset(0% 0 0 0)';
+    root.classList.remove('dc-intro');
+    const t = lab ? lab.animate([{ opacity: 0, transform: 'translateY(60px)', filter: 'blur(8px)' }, { opacity: 1, transform: 'none', filter: 'blur(0px)' }], { duration: 900, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'both' }) : null;
+    setTimeout(() => {
+      start();
+      const b = cur.animate([{ clipPath: 'inset(0 0 0% 0)' }, { clipPath: 'inset(0 0 100% 0)' }], { duration: 850, easing: 'cubic-bezier(.76,0,.24,1)', fill: 'forwards' });
+      b.onfinish = () => { cur.style.visibility = 'hidden'; cur.style.clipPath = 'inset(100% 0 0 0)'; b.cancel(); if (t) t.cancel(); };
+    }, 1150);
+  }
+  componentWillUnmount() { (this._off || []).forEach(fn => fn()); }
+  setupAnim() {
+    const ease = 'cubic-bezier(.2,.7,.2,1)', off = this._off;
+    const fine = matchMedia('(hover:hover) and (pointer:fine)').matches, lite = innerWidth < 760;
+    const bl = a => lite ? {} : { filter: 'blur(' + a + 'px)' }, bl0 = lite ? {} : { filter: 'blur(0px)' };
+    const K = {
+      up: [{ opacity: 0, transform: 'translateY(44px)', ...bl(6) }, { opacity: 1, transform: 'none', ...bl0 }],
+      left: [{ opacity: 0, transform: 'translateX(-56px)' }, { opacity: 1, transform: 'none' }],
+      right: [{ opacity: 0, transform: 'translateX(56px)', ...bl(6) }, { opacity: 1, transform: 'none', ...bl0 }],
+      scale: [{ opacity: 0, transform: 'scale(.88)', ...bl(8) }, { opacity: 1, transform: 'none', ...bl0 }],
+      clip: [{ opacity: 0, clipPath: 'inset(0 0 100% 0)', transform: 'translateY(40px)' }, { opacity: 1, clipPath: 'inset(0 0 0% 0)', transform: 'none' }],
+      rise: [{ transform: 'translateY(118%) rotate(4deg)', transformOrigin: '0 100%' }, { transform: 'none', transformOrigin: '0 100%' }]
+    };
+    const ZOOM = 1.14;
+    let mq = null, mqHover = 1, mqRate = 1, mqLast = 1, vel = 0, lastY = scrollY, dirty = true, lastActive = null;
+    const C = { sections: [], imgs: [], dots: [], par: [], tl: null };
+
+    // Observer: elemen muncul saat masuk layar (stagger otomatis untuk elemen yang muncul bersamaan)
+    const io = new IntersectionObserver(es => { let b = 0; es.forEach(e => { if (!e.isIntersecting) return; const el = e.target; io.unobserve(el); const a = el._rv; if (!a) return; a.effect.updateTiming({ delay: el.dataset.delay ? +el.dataset.delay : (b++) * 100 }); a.play(); }); }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    // 'clip' dan 'rise' memotong dirinya sendiri sehingga luas terlihatnya 0 -> amati pembungkusnya agar tetap terpicu
+    const kio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; const hd = e.target; kio.unobserve(hd); (hd._kids || []).forEach((k, i) => { const a = k._rv; if (!a) return; a.effect.updateTiming({ delay: k.dataset.delay ? +k.dataset.delay : i * 100 }); a.play(); }); }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    // Observer: foto zoom-out halus saat pertama terlihat
+    const zio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; zio.unobserve(e.target); const a = e.target._zm; if (a) a.play(); }), { threshold: 0.15 });
+    const cio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; cio.unobserve(e.target); const el = e.target, t = el.textContent, v = parseFloat(t), dec = (t.split('.')[1] || '').length, t0 = performance.now(); if (isNaN(v)) return; const step = now => { const p = Math.min(1, (now - t0) / 1800), k = 1 - Math.pow(1 - p, 4); el.textContent = p < 1 ? (v * k).toFixed(dec) : t; if (p < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }), { threshold: 0.6 });
+    const loop = (el, kf, o) => el.animate(kf, Object.assign({ iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' }, o));
+
+    const cache = () => {
+      C.sections = [...document.querySelectorAll('section[data-screen-label]')];
+      C.imgs = [...document.querySelectorAll('[data-pimg]')];
+      C.dots = [...document.querySelectorAll('[data-tl-dot]')];
+      C.par = [...document.querySelectorAll('[data-parallax]')];
+      C.tl = document.querySelector('[data-tl]');
+    };
+    const prep = () => {
+      document.querySelectorAll('[data-reveal]').forEach(el => { if (el._rv) return; const a = el.animate(K[el.dataset.reveal] || K.up, { duration: el.dataset.reveal === 'rise' ? 1000 : 1100, easing: ease, fill: 'both' }); a.pause(); a.currentTime = 0; a.onfinish = () => a.cancel(); el._rv = a; if (el.dataset.reveal === 'rise' || el.dataset.reveal === 'clip') { const hd = el.parentElement; (hd._kids = hd._kids || []).push(el); kio.observe(hd); } else io.observe(el); });
+      document.querySelectorAll('[data-pimg]').forEach(el => { if (el._zm) return; el.style.scale = String(ZOOM); const a = el.animate([{ scale: '1.55' }, { scale: String(ZOOM) }], { duration: 1900, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'both' }); a.pause(); a.currentTime = 0; a.onfinish = () => { el.style.scale = String(ZOOM); a.cancel(); }; el._zm = a; zio.observe(el); });
+      document.querySelectorAll('[data-count]').forEach(el => { if (el._ct) return; el._ct = 1; cio.observe(el); });
+      document.querySelectorAll('[data-twinkle]').forEach(el => { if (el._tw) return; el._tw = 1; loop(el, [{ opacity: 0.1, transform: 'scale(.5)' }, { opacity: 1, transform: 'scale(1.35)' }], { duration: 1600 + Math.random() * 2600, delay: -Math.random() * 3000 }); loop(el, [{ translate: '0 0' }, { translate: (Math.random() * 60 - 30) + 'px ' + (Math.random() * 60 - 30) + 'px' }], { duration: 7000 + Math.random() * 6000 }); });
+      document.querySelectorAll('[data-float]').forEach(el => { if (el._fl) return; el._fl = 1; loop(el, [{ transform: 'translateY(0)' }, { transform: 'translateY(-' + el.dataset.float + 'px)' }], { duration: 3800 + Math.random() * 1800 }); });
+      document.querySelectorAll('[data-spin]').forEach(el => { if (el._sp) return; el._sp = 1; el.animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(360deg)' }], { duration: 26000, iterations: Infinity }); });
+      document.querySelectorAll('[data-marquee]').forEach(el => { if (el._mq) return; mq = el.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-50%)' }], { duration: 38000, iterations: Infinity }); el._mq = mq; el.addEventListener('mouseenter', () => { mqHover = 0.25; }); el.addEventListener('mouseleave', () => { mqHover = 1; }); });
+      document.querySelectorAll('[data-type]').forEach(el => { if (el._ty) return; el._ty = 1; const n = Math.max(1, el.textContent.length); const a = el.animate([{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)' }], { duration: n * 55, easing: 'steps(' + n + ')', fill: 'both' }); a.pause(); a.currentTime = 0; a.onfinish = () => a.cancel(); const o = new IntersectionObserver(es => { if (es[0].isIntersecting) { o.disconnect(); a.play(); } }, { threshold: 0.8 }); o.observe(el); off.push(() => o.disconnect()); });
+      if (fine) {
+        document.querySelectorAll('[data-magnet]').forEach(el => { if (el._mg) return; el._mg = 1; el.style.transition = 'translate .35s ' + ease + ',transform .3s,background .3s'; el.addEventListener('mousemove', e => { const r = el.getBoundingClientRect(); el.style.translate = ((e.clientX - r.left - r.width / 2) * 0.25) + 'px ' + ((e.clientY - r.top - r.height / 2) * 0.35) + 'px'; }); el.addEventListener('mouseleave', () => { el.style.translate = '0 0'; }); });
+        // kartu: cahaya hangat mengikuti kursor
+        document.querySelectorAll('[data-card]').forEach(el => { if (el._gl) return; el._gl = 1; const g = el.querySelector('[data-glare]'); if (!g) return; el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(); g.style.setProperty('--mx', (e.clientX - r.left) + 'px'); g.style.setProperty('--my', (e.clientY - r.top) + 'px'); g.style.opacity = '1'; }); el.addEventListener('pointerleave', () => { g.style.opacity = '0'; }); });
+      }
+    };
+    const updatePill = () => {
+      const pill = document.querySelector('[data-navpill]'), link = document.querySelector('nav a[href="#' + this.state.active + '"]');
+      if (pill && link) { pill.style.opacity = '1'; pill.style.width = link.offsetWidth + 'px'; pill.style.transform = 'translateX(' + link.offsetLeft + 'px)'; document.querySelectorAll('nav a').forEach(a => { a.style.color = a === link ? '#fff' : '#b7c0ea'; }); }
+    };
+    // Kerja yang bergantung pada scroll: semua pembacaan layout dikumpulkan dulu, baru penulisan (tanpa layout thrashing)
+    const scrollWork = () => {
+      const h = document.documentElement, vh = innerHeight, big = innerWidth >= 760;
+      const p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+      const secR = big ? C.sections.map(s => s.getBoundingClientRect()) : [];
+      const tlR = C.tl ? C.tl.getBoundingClientRect() : null;
+      const dotT = C.dots.map(d => d.getBoundingClientRect().top);
+      const imR = C.imgs.map(im => im.parentElement.getBoundingClientRect());
+      const bar = document.querySelector('[data-progress]'); if (bar) bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+      const tt = document.querySelector('[data-totop]'), ring = document.querySelector('[data-totop-ring]');
+      if (tt) { const show = h.scrollTop > 400; tt.style.opacity = show ? '1' : '0'; tt.style.translate = show ? '0 0' : '0 20px'; tt.style.pointerEvents = show ? 'auto' : 'none'; }
+      if (ring) ring.setAttribute('stroke-dashoffset', (157.08 * (1 - p)).toFixed(2));
+      C.sections.forEach((s, i) => {
+        if (!big) { s.style.scale = ''; return; }
+        const r = secR[i], enter = s.id === 'beranda' ? 1 : Math.min(1, Math.max(0, (vh - r.top) / (vh * 0.45))), exit = Math.min(1, Math.max(0, r.bottom / (vh * 0.4)));
+        const e = 1 - Math.pow(1 - Math.min(enter, exit), 3); s.style.scale = (0.96 + 0.04 * e).toFixed(4);
+      });
+      C.imgs.forEach((im, i) => { const r = imR[i], k = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2))); im.style.translate = '0 ' + (-k * (lite ? 8 : 14)).toFixed(1) + 'px'; });
+      if (tlR) {
+        const line = vh * 0.6, q = Math.min(1, Math.max(0, (line - tlR.top) / tlR.height));
+        const fill = C.tl.querySelector('[data-tl-fill]'), head = C.tl.querySelector('[data-tl-head]');
+        if (fill) fill.style.transform = 'scaleY(' + q.toFixed(4) + ')';
+        if (head) { head.style.top = (q * 100).toFixed(2) + '%'; head.style.opacity = q > 0 && q < 1 ? '1' : '0'; }
+        C.dots.forEach((d, i) => { const lit = dotT[i] < line; d.style.transform = lit ? 'scale(1.6)' : 'scale(1)'; d.style.background = lit ? '#ffe7b8' : '#ff6b5e'; d.style.boxShadow = lit ? '0 0 14px 4px rgba(255,231,184,.6)' : 'none'; });
+      }
+    };
+
+    prep(); cache();
+    let mx = innerWidth / 2, my = innerHeight / 2, sx = mx, sy = my, raf;
+    const spot = document.querySelector('[data-spot]');
+    // Satu loop untuk semuanya; hanya bekerja saat ada yang berubah
+    const frame = () => {
+      raf = requestAnimationFrame(frame);
+      const dx = mx - sx, dy = my - sy;
+      if (Math.abs(dx) > 0.2 || Math.abs(dy) > 0.2) {
+        sx += dx * 0.08; sy += dy * 0.08;
+        if (spot) spot.style.translate = (sx - 320) + 'px ' + (sy - 320) + 'px';
+        const nx = sx / innerWidth - 0.5, ny = sy / innerHeight - 0.5;
+        C.par.forEach(el => { const k = +el.dataset.parallax; el.style.translate = (nx * k * 2) + 'px ' + (ny * k * 2) + 'px'; });
+      }
+      if (this.state.active !== lastActive) { lastActive = this.state.active; updatePill(); }
+      if (dirty) { dirty = false; scrollWork(); }
+      // marquee ikut mempercepat saat scroll cepat, lalu pelan kembali
+      vel *= 0.9;
+      const target = Math.min(6, 1 + Math.abs(vel) * 0.1) * mqHover; mqRate += (target - mqRate) * 0.12;
+      if (mq && Math.abs(mqRate - mqLast) > 0.01) { mq.updatePlaybackRate(mqRate); mqLast = mqRate; }
+    };
+    raf = requestAnimationFrame(frame);
+    const onMove = e => { mx = e.clientX; my = e.clientY; };
+    const onScroll = () => { dirty = true; const y = scrollY; vel = Math.max(-80, Math.min(80, vel + (y - lastY))); lastY = y; };
+    const onResize = () => { dirty = true; updatePill(); };
+    addEventListener('mousemove', onMove); addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onResize);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { updatePill(); dirty = true; });
+    const sio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && this.state.active !== e.target.id) this.setState({ active: e.target.id }); }), { rootMargin: '-45% 0px -50% 0px' });
+    ['beranda','pendidikan','magang','organisasi','sertifikasi','teknis','personal','kontak'].forEach(id => { const el = document.getElementById(id); if (el) sio.observe(el); });
+    // DOM berubah (misal accordion) -> siapkan elemen baru, tanpa kerja berlebih
+    let pend = false;
+    const mo = new MutationObserver(() => { if (pend) return; pend = true; requestAnimationFrame(() => { pend = false; prep(); cache(); dirty = true; }); });
+    mo.observe(document.body, { childList: true, subtree: true });
+    off.push(() => { io.disconnect(); kio.disconnect(); zio.disconnect(); cio.disconnect(); sio.disconnect(); mo.disconnect(); cancelAnimationFrame(raf); removeEventListener('mousemove', onMove); removeEventListener('scroll', onScroll); removeEventListener('resize', onResize); });
+  }
+  go(id) { return (e) => {
+    e.preventDefault(); this.setState({ active: id });
+    const el = document.getElementById(id); if (!el) return;
+    const cur = document.querySelector('[data-curtain]'), lab = document.querySelector('[data-curtain-label]');
+    const plain = () => window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+    if (!cur || this.props.animations === false || (!this._force && matchMedia('(prefers-reduced-motion: reduce)').matches) || this._busy) return plain();
+    this._busy = true;
+    const names = this.state.lang === 'en' ? { beranda: 'Home', tentang: 'About', pendidikan: 'Education', magang: 'Internships', organisasi: 'Organization', sertifikasi: 'Certificates', teknis: 'Technical Skills', personal: 'Personal & Software', kontak: 'Contact' } : { beranda: 'Beranda', tentang: 'Tentang', pendidikan: 'Pendidikan', magang: 'Magang', organisasi: 'Organisasi', sertifikasi: 'Sertifikasi', teknis: 'Kemampuan Teknis', personal: 'Personal & Software', kontak: 'Kontak' };
+    if (lab) lab.textContent = names[id] || '';
+    const d = innerWidth < 760 ? 320 : 480, ease = 'cubic-bezier(.76,0,.24,1)';
+    cur.style.visibility = 'visible';
+    const a = cur.animate([{ clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)' }], { duration: d, easing: ease, fill: 'forwards' });
+    if (lab) lab.animate([{ opacity: 0, transform: 'translateY(60px)', filter: 'blur(8px)' }, { opacity: 1, transform: 'none', filter: 'blur(0px)' }], { duration: d + 200, delay: d * 0.4, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'both' });
+    a.onfinish = () => {
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'instant' });
+      setTimeout(() => {
+        const b = cur.animate([{ clipPath: 'inset(0 0 0% 0)' }, { clipPath: 'inset(0 0 100% 0)' }], { duration: d, easing: ease, fill: 'forwards' });
+        b.onfinish = () => { cur.style.visibility = 'hidden'; a.cancel(); b.cancel(); if (lab) lab.getAnimations().forEach(x => x.cancel()); this._busy = false; };
+      }, innerWidth < 760 ? 180 : 320);
+    };
+  }; }
+  renderVals() {
+    const L = this.state.lang === 'en' ? 'en' : 'id';
+    const en = L === 'en';
+    const TX = {
+      id: {
+        hire: 'Hubungi Saya', hello: 'HELLO, SAYA', aboutBtn: 'Tentang Saya', viewExp: 'Lihat Pengalaman', aboutTitle: 'TENTANG SAYA', findMe: 'Temukan saya di',
+        aboutText: 'Lulusan Profesi Apoteker dari Universitas Indonesia dengan pengalaman praktik dalam pelayanan farmasi klinis di rumah sakit, apotek, dan puskesmas. Memiliki kompetensi dalam pengkajian dan skrining resep, dispensing, Pelayanan Informasi Obat (PIO), konseling, serta edukasi obat. Didukung oleh pengalaman tambahan di sektor industri dan regulasi farmasi, sehingga memiliki pemahaman mengenai siklus obat dari produksi hingga pelayanan ke pasien. Berorientasi pada pelayanan kefarmasian yang berpusat pada pasien (patient-oriented care) dengan mengutamakan ketepatan terapi, patient safety, dan kualitas pelayanan.',
+        secEdu: 'PENDIDIKAN', secInt: 'PENGALAMAN MAGANG', secOrg: 'PENGALAMAN ORGANISASI', secCert: 'SERTIFIKASI, LISENSI, & PELATIHAN', secTech: 'KEMAMPUAN TEKNIS', secPers: 'KEMAMPUAN PERSONAL & SOFTWARE',
+        gpaLabel: 'IPK / 4.00', persTitle: 'Kemampuan Personal', swTitle: 'Kemampuan Software',
+        contactTitle: 'Mari bekerja sama', thanks: 'Terima kasih! Pesan kamu sudah terkirim.', phName: 'Nama kamu', phEmail: 'Email', phMsg: 'Pesan singkat', send: 'Kirim Pesan',
+        toTop: 'Kembali ke atas', langLabel: 'Pilih bahasa', detail: 'Lihat detail', close: 'Tutup', prev: 'Sebelumnya', next: 'Berikutnya', issuedBy: 'Diterbitkan oleh', holder: 'Atas nama',
+        noPhoto: 'Foto dokumen asli akan ditampilkan di sini setelah diunggah.'
+      },
+      en: {
+        hire: 'Contact Me', hello: "HELLO, I'M", aboutBtn: 'About Me', viewExp: 'View Experience', aboutTitle: 'ABOUT ME', findMe: 'Find me on',
+        aboutText: 'Pharmacist graduate of Universitas Indonesia with practical experience in clinical pharmacy services at hospitals, community pharmacies, and community health centers (puskesmas). Competent in prescription review and screening, dispensing, Drug Information Services (PIO), counseling, and patient drug education. Supported by additional experience in the pharmaceutical industry and regulatory affairs, giving an understanding of the drug cycle from production to patient care. Oriented toward patient-centered pharmaceutical care, prioritizing therapeutic accuracy, patient safety, and service quality.',
+        secEdu: 'EDUCATION', secInt: 'INTERNSHIP EXPERIENCE', secOrg: 'ORGANIZATIONAL EXPERIENCE', secCert: 'CERTIFICATIONS, LICENSES, & TRAINING', secTech: 'TECHNICAL SKILLS', secPers: 'PERSONAL & SOFTWARE SKILLS',
+        gpaLabel: 'GPA / 4.00', persTitle: 'Personal Skills', swTitle: 'Software Skills',
+        contactTitle: "Let's work together", thanks: 'Thank you! Your message has been sent.', phName: 'Your name', phEmail: 'Email', phMsg: 'Short message', send: 'Send Message',
+        toTop: 'Back to top', langLabel: 'Choose language', detail: 'View details', close: 'Close', prev: 'Previous', next: 'Next', issuedBy: 'Issued by', holder: 'Holder',
+        noPhoto: 'The photo of the original document will be shown here once uploaded.'
+      }
+    };
+    const t = TX[L];
+    const NAV = {
+      id: ['Beranda', 'Tentang', 'Pendidikan', 'Magang', 'Organisasi', 'Sertifikasi', 'Teknis', 'Personal'],
+      en: ['Home', 'About', 'Education', 'Internships', 'Organization', 'Certificates', 'Technical', 'Personal']
+    }[L];
+    const ids = ['beranda', 'tentang', 'pendidikan', 'magang', 'organisasi', 'sertifikasi', 'teknis', 'personal'];
+    let seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+    const dots = Array.from({ length: 22 }, () => ({ x: (rnd()*100).toFixed(1)+'%', y: (rnd()*100).toFixed(1)+'%', s: (2+rnd()*4).toFixed(1)+'px', o: (0.3+rnd()*0.6).toFixed(2) }));
+
+    // ───── data bahasa Indonesia (persis dari CV) ─────
+    const ID = {
+      marquee: ['Skrining Resep', 'Pelayanan Informasi Obat', 'Konseling Pasien', 'Pemantauan Terapi Obat', 'Patient Safety', 'Dispensing', 'Rekonsiliasi Obat', 'Farmasi Klinis'],
+      stats: ['IPK Sarjana Farmasi', 'IPK Profesi Apoteker'],
+      edu: [['Profesi Apoteker', 'Universitas Indonesia'], ['Sarjana Farmasi', 'Universitas Indonesia']],
+      internships: [
+        ['Mei – Juli 2026', 'Clinical Pharmacy Intern', 'RSUP Dr. Kariadi — Semarang, Jawa Tengah', [
+          'Melaksanakan rotasi di depo rawat jalan, rawat inap, IGD, kamar operasi, dan gudang farmasi untuk memahami alur pelayanan serta pengelolaan perbekalan farmasi di rumah sakit.',
+          'Berpartisipasi dalam pelayanan obat mulai dari penerimaan resep, skrining resep, penyiapan, pemeriksaan ulang, dispensing, konseling, hingga penyerahan obat pulang di bawah supervisi apoteker.',
+          'Berpartisipasi dalam rekonsiliasi obat, visite, dan pengkajian pasien secara langsung bersama tim.',
+          'Melaksanakan Pemantauan Terapi Obat (PTO) pada pasien yang ditugaskan, termasuk pasien stroke iskemik dan stroke hemoragik, di bawah supervisi apoteker.',
+          'Mengkaji ketepatan indikasi, dosis, respons terapi, potensi medication error, serta masalah terkait obat (MTO) sebagai bagian dari kegiatan pelayanan farmasi klinis.',
+          'Berpartisipasi dalam pelayanan konseling pasien ARV di instalasi rawat jalan serta memberikan informasi terkait penggunaan obat.',
+          'Memperoleh pengalaman dalam penerapan sistem distribusi obat 1 × 24 jam dan unit dose pada pelayanan rawat inap.',
+          'Melakukan konseling obat pulang dan memberikan informasi obat kepada pasien sesuai kebutuhan pelayanan.',
+          'Memperoleh pengalaman dalam pengelolaan obat untuk kebutuhan tindakan operasi terjadwal maupun emergensi.']],
+        ['Oktober – November 2025', 'Community Pharmacy Intern', 'Apotek Kimia Farma Cikokol — Tangerang, Banten', [
+          'Melaksanakan skrining resep, dispensing, pemberian informasi obat, dan pelayanan swamedikasi.',
+          'Mendukung pelayanan Program Rujuk Balik (PRB) BPJS melalui verifikasi administrasi dan penyiapan obat.']],
+        ['September – Oktober 2025', 'Primary Care Pharmacy Intern', 'Puskesmas Cengkareng — Jakarta Barat, DKI Jakarta', [
+          'Melakukan skrining resep, konseling, dan pemantauan terapi obat pada pasien puskesmas.',
+          'Mendukung pengelolaan sediaan farmasi meliputi perencanaan, pengadaan, penyimpanan, hingga pemusnahan.',
+          'Melaksanakan stok opname untuk mendukung pengendalian persediaan serta pemantauan obat kedaluwarsa.']],
+        ['April – Mei 2026', 'Regulatory Affairs Intern', 'Kementerian Kesehatan RI (Ditjen Farmalkes)', [
+          'Mempelajari regulasi peredaran alat kesehatan di Indonesia, termasuk alur perizinan, registrasi, registrasi ulang, dan evaluasi dokumen pendukung.']],
+        ['Desember 2025 – Januari 2026', 'Pharmaceutical Industry Intern', 'PT Bio Farma (Persero) — Bandung, Jawa Barat', [
+          'Terlibat dalam proses produksi sediaan solid meliputi penimbangan, granulasi basah, dan pencetakan, serta melakukan Line Clearance dan In-Process Control (IPC).',
+          'Mendukung pengujian Quality Control (QC) meliputi kadar, disolusi, keseragaman bobot, kekerasan, friabilitas, pH, dan Loss on Drying (LOD).',
+          'Mempelajari proses preformulasi, optimasi R&D, serta sistem penunjang kritis industri meliputi HVAC, pengolahan air, dan cleanroom.']],
+        ['2024 – 2025', 'Asisten Dosen Praktikum Farmakologi', 'Universitas Indonesia — Depok, Jawa Barat', [
+          'Membimbing dan menjelaskan prosedur kegiatan praktikum kepada mahasiswa dari 6 kelas reguler.',
+          'Menyiapkan bahan dan peralatan praktikum serta memastikan kebutuhan kegiatan tersedia sebelum pelaksanaan.',
+          'Melaksanakan pre-test dan evaluasi hasil praktikum mahasiswa sebagai bagian dari proses pembelajaran.']]
+      ],
+      orgs: [
+        ['2024 – 2025', 'Staf Kementerian Keuangan', 'BEM Universitas Indonesia', [
+          'Menjalankan fungsi budgeting dan controlling dalam pengelolaan keuangan organisasi.',
+          'Menyusun pelaporan keuangan secara transparan dan akuntabel untuk mendukung pertanggungjawaban organisasi.']],
+        ['2022 – 2023', 'Bendahara', 'Himpunan Mahasiswa Jurusan Farmasi', [
+          'Menyusun rencana pengeluaran dan mengelola perputaran dana organisasi selama satu periode kepengurusan.',
+          'Menyusun laporan pertanggungjawaban keuangan sebagai bentuk akuntabilitas pengelolaan dana organisasi.']]
+      ],
+      certs: [
+        ['SERTIFIKAT', 'Certificate in Customer Feedback Management', 'Badan Nasional Sertifikasi Profesi (BNSP)', 'Sertifikat kompetensi di bidang Customer Feedback Management yang diterbitkan oleh Badan Nasional Sertifikasi Profesi (BNSP).'],
+        ['LISENSI', 'Surat Tanda Registrasi (STR) Apoteker', 'Konsil Kesehatan Indonesia', 'Surat Tanda Registrasi (STR) adalah bukti registrasi apoteker yang diterbitkan oleh Konsil Kesehatan Indonesia sebagai dasar untuk menjalankan praktik kefarmasian.'],
+        ['SERTIFIKAT', 'Sertifikat Kompetensi Apoteker', 'Kolegium Farmasi Indonesia', 'Sertifikat kompetensi apoteker yang diterbitkan oleh Kolegium Farmasi Indonesia sebagai pengakuan kompetensi profesi apoteker.']
+      ],
+      technical: ['Pelayanan Informasi Obat (PIO)', 'Skrining resep dan evaluasi rasionalitas terapi', 'Dispensing dan peracikan obat (compounding)', 'Konseling dan edukasi pasien terkait penggunaan obat', 'Pemantauan Terapi Obat (PTO)', 'Evaluasi efektivitas dan keamanan terapi obat', 'Identifikasi Drug Related Problems (DRP)', 'Monitoring Efek Samping Obat', 'Implementasi patient safety dalam penggunaan obat', 'Pengkajian penggunaan obat pasien', 'Evaluasi ketepatan penggunaan obat', 'Pemantauan respons pasien terhadap terapi', 'Pelayanan kefarmasian berbasis kebutuhan pasien', 'Dokumentasi pelayanan kefarmasian'],
+      personal: ['Disiplin', 'Tanggung Jawab', 'Ramah', 'Sopan', 'Empati', 'Teliti', 'Komunikatif', 'Adaptif', 'Kerja Tim', 'Cepat Belajar'],
+      contactLabels: ['EMAIL', 'DOMISILI', 'LINKEDIN']
+    };
+    // ───── data bahasa Inggris ─────
+    const EN = {
+      marquee: ['Prescription Screening', 'Drug Information Services', 'Patient Counseling', 'Therapeutic Drug Monitoring', 'Patient Safety', 'Dispensing', 'Medication Reconciliation', 'Clinical Pharmacy'],
+      stats: ['Bachelor of Pharmacy GPA', 'Pharmacist Profession GPA'],
+      edu: [['Pharmacist Profession Program', 'Universitas Indonesia'], ['Bachelor of Pharmacy', 'Universitas Indonesia']],
+      internships: [
+        ['May – July 2026', 'Clinical Pharmacy Intern', 'RSUP Dr. Kariadi — Semarang, Central Java', [
+          'Completed rotations in the outpatient, inpatient, emergency (IGD), operating room, and pharmacy warehouse depots to understand service flow and pharmaceutical supply management in a hospital.',
+          'Took part in medication services from prescription receipt, prescription screening, preparation, double-checking, dispensing, and counseling through to discharge medication hand-over, under pharmacist supervision.',
+          'Took part in medication reconciliation, ward rounds (visite), and direct patient assessment together with the team.',
+          'Carried out Therapeutic Drug Monitoring (PTO) on assigned patients, including ischemic and hemorrhagic stroke patients, under pharmacist supervision.',
+          'Assessed the appropriateness of indication, dose, therapeutic response, potential medication errors, and drug-related problems (MTO) as part of clinical pharmacy activities.',
+          'Took part in ARV patient counseling at the outpatient installation and provided information on medication use.',
+          'Gained experience in applying the 1 × 24-hour drug distribution system and unit dose in inpatient care.',
+          'Provided discharge medication counseling and drug information to patients according to service needs.',
+          'Gained experience in managing medications for scheduled and emergency surgical procedures.']],
+        ['October – November 2025', 'Community Pharmacy Intern', 'Apotek Kimia Farma Cikokol — Tangerang, Banten', [
+          'Performed prescription screening, dispensing, drug information services, and self-medication (swamedikasi) services.',
+          'Supported the BPJS Referral-Back Program (PRB) through administrative verification and medication preparation.']],
+        ['September – October 2025', 'Primary Care Pharmacy Intern', 'Puskesmas Cengkareng — West Jakarta, DKI Jakarta', [
+          'Performed prescription screening, counseling, and drug therapy monitoring for community health center patients.',
+          'Supported pharmaceutical supply management including planning, procurement, storage, and disposal.',
+          'Carried out stock opname to support inventory control and monitoring of expired drugs.']],
+        ['April – May 2026', 'Regulatory Affairs Intern', 'Ministry of Health RI (Ditjen Farmalkes)', [
+          'Studied regulations on the distribution of medical devices in Indonesia, including the licensing flow, registration, re-registration, and evaluation of supporting documents.']],
+        ['December 2025 – January 2026', 'Pharmaceutical Industry Intern', 'PT Bio Farma (Persero) — Bandung, West Java', [
+          'Involved in solid dosage production including weighing, wet granulation, and compression, and carried out Line Clearance and In-Process Control (IPC).',
+          'Supported Quality Control (QC) testing including assay, dissolution, weight uniformity, hardness, friability, pH, and Loss on Drying (LOD).',
+          'Studied preformulation, R&D optimization, and critical industry support systems including HVAC, water treatment, and cleanrooms.']],
+        ['2024 – 2025', 'Pharmacology Practicum Teaching Assistant', 'Universitas Indonesia — Depok, West Java', [
+          'Guided and explained practicum procedures to students from 6 regular classes.',
+          'Prepared practicum materials and equipment and ensured all activity needs were available before sessions.',
+          "Conducted pre-tests and evaluated students' practicum results as part of the learning process."]]
+      ],
+      orgs: [
+        ['2024 – 2025', 'Staff of the Ministry of Finance', 'BEM Universitas Indonesia', [
+          'Carried out budgeting and controlling functions in managing organizational finances.',
+          'Prepared transparent and accountable financial reports to support organizational accountability.']],
+        ['2022 – 2023', 'Treasurer', 'Pharmacy Student Association (Himpunan Mahasiswa Jurusan Farmasi)', [
+          'Prepared expenditure plans and managed organizational funds during one term of the board.',
+          'Prepared financial accountability reports as a form of accountability in managing organizational funds.']]
+      ],
+      certs: [
+        ['CERTIFICATE', 'Certificate in Customer Feedback Management', 'National Professional Certification Agency (BNSP)', 'A competency certificate in Customer Feedback Management issued by the National Professional Certification Agency (BNSP).'],
+        ['LICENSE', 'Pharmacist Registration Certificate (STR)', 'Indonesian Health Council', 'The Registration Certificate (STR) is proof of pharmacist registration issued by the Indonesian Health Council, the basis for practicing pharmacy.'],
+        ['CERTIFICATE', 'Pharmacist Competency Certificate', 'Indonesian Pharmacy Collegium', 'A pharmacist competency certificate issued by the Indonesian Pharmacy Collegium as recognition of professional pharmacist competence.']
+      ],
+      technical: ['Drug Information Services (PIO)', 'Prescription screening and therapy rationality evaluation', 'Dispensing and compounding', 'Patient counseling and education on medication use', 'Therapeutic Drug Monitoring (PTO)', 'Evaluation of drug therapy effectiveness and safety', 'Drug Related Problems (DRP) identification', 'Adverse drug reaction monitoring', 'Patient safety implementation in medication use', 'Patient medication use review', 'Evaluation of medication-use appropriateness', 'Monitoring patient response to therapy', 'Patient-needs-based pharmaceutical care', 'Pharmaceutical care documentation'],
+      personal: ['Disciplined', 'Responsible', 'Friendly', 'Polite', 'Empathetic', 'Meticulous', 'Communicative', 'Adaptable', 'Teamwork', 'Fast Learner'],
+      contactLabels: ['EMAIL', 'LOCATION', 'LINKEDIN']
+    };
+    const D = en ? EN : ID;
+    const intImgs = ['exp-kariadi', 'exp-kimiafarma', 'exp-puskesmas', 'exp-kemenkes', 'exp-biofarma', 'exp-farmakologi'];
+    const orgImgs = ['exp-bem', 'exp-hmj'];
+    const item = (arr, imgs) => arr.map(([period, role, org, points], i) => ({ period, role, org, img: 'assets/foto/' + imgs[i] + '.jpg', points }));
+    const certFiles = ['cert-bnsp', 'cert-str', 'cert-kompetensi'];
+    const cert = this.state.cert, imgOk = this.state.imgOk || {};
+    const certs = D.certs.map(([kind, title, issuer, desc], i) => ({ kind, title, issuer, desc, hasImg: !!imgOk[i], noImg: !imgOk[i], imgSrc: 'assets/sertifikat/' + certFiles[i] + '.jpg', open: () => this.openCert(i), no: i + 1, total: D.certs.length }));
+    const lc = this.state.lang;
+    return {
+      t, isId: lc === 'id', isEn: lc === 'en',
+      idBg: lc === 'id' ? '#ffe7b8' : 'transparent', idColor: lc === 'id' ? '#0a1440' : '#b7c0ea',
+      enBg: lc === 'en' ? '#ffe7b8' : 'transparent', enColor: lc === 'en' ? '#0a1440' : '#b7c0ea',
+      setId: () => this.setLang('id'), setEn: () => this.setLang('en'),
+      sparkles: this.props.sparkles ?? true,
+      dots,
+      marquee: [0,1].flatMap(() => D.marquee),
+      nav: ids.map((id, i) => ({ id, label: NAV[i], go: this.go(id), color: this.state.active===id ? '#fff' : '#b7c0ea', bg: (this.props.animations !== false && this.state.active===id) ? 'transparent' : (this.state.active===id ? 'rgba(255,255,255,.1)' : 'transparent') })),
+      goTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      goKontak: this.go('kontak'), goTentang: this.go('tentang'), goPorto: this.go('magang'),
+      stats: [{ v: '3.94', l: D.stats[0] }, { v: '4.00', l: D.stats[1] }],
+      socials: [{ label: 'Email', href: 'mailto:hafizah.nurfadillah@gmail.com' }, { label: 'LinkedIn', href: 'https://linkedin.com/in/hafizah-nurfadillah' }],
+      contacts: [{ label: D.contactLabels[0], value: 'hafizah.nurfadillah@gmail.com', href: 'mailto:hafizah.nurfadillah@gmail.com' }, { label: D.contactLabels[1], value: 'Jakarta, Indonesia', href: '#kontak' }, { label: D.contactLabels[2], value: 'linkedin.com/in/hafizah-nurfadillah', href: 'https://linkedin.com/in/hafizah-nurfadillah' }],
+      education: [
+        { year: '2025 — 2026', title: D.edu[0][0], school: D.edu[0][1], gpa: '4.00', img: 'assets/foto/edu-profesi.jpg' },
+        { year: '2021 — 2025', title: D.edu[1][0], school: D.edu[1][1], gpa: '3.94', img: 'assets/foto/edu-sarjana.jpg' }
+      ],
+      internships: item(D.internships, intImgs),
+      orgs: item(D.orgs, orgImgs),
+      certs,
+      certOpen: cert >= 0,
+      cur: certs[Math.max(0, cert)],
+      closeCert: () => this.closeCertNow(), stop: (e) => e.stopPropagation(),
+      prevCert: () => this.stepCert(-1), nextCert: () => this.stepCert(1),
+      technical: D.technical.map((t2, i) => ({ n: i + 1, t: t2 })),
+      personal: D.personal,
+      software: ['Ms. Office (Word, Excel)', 'Canva'],
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      sent: this.state.sent, notSent: !this.state.sent
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+Letakkan foto/scan sertifikat ASLI di folder ini dengan nama persis:
+
+  cert-bnsp.jpg         -> Certificate in Customer Feedback Management (BNSP)
+  cert-str.jpg          -> Surat Tanda Registrasi (STR) Apoteker
+  cert-kompetensi.jpg   -> Sertifikat Kompetensi Apoteker (Kolegium Farmasi Indonesia)
+
+Foto akan tampil otomatis di kartu dan di jendela detail saat kartu diklik.
+Jika file tidak ada, kartu menampilkan ikon perisai (tidak ada dokumen palsu).
